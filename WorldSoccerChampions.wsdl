@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<wsdl:definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" 
+xmlns:wsc="http://wlopera.org/WorldSoccerChampions/" 
+xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" 
+xmlns:xsd="http://www.w3.org/2001/XMLSchema" 
+name="WorldSoccerChampions" 
+targetNamespace="http://wlopera.org/WorldSoccerChampions/">
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://wlopera.org/WorldSoccerChampions/">
+      <xsd:element name="WorldSoccerChampions">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="year" type="xsd:string"/>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="WorldSoccerChampionsResponse">
+       <xsd:complexType>
+          <xsd:sequence>
+          	<xsd:element name="team" type="wsc:Team"></xsd:element>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      
+      <xsd:complexType name="Team">
+      	<xsd:sequence>
+                    <xsd:element name="nameHeadquarter" type="xsd:string"></xsd:element>
+                    <xsd:element name="year" type="xsd:int"></xsd:element>
+      		<xsd:element name="nameChampion" type="xsd:string"></xsd:element>
+                    <xsd:element name="score" type="xsd:string"></xsd:element>
+                    <xsd:element name="nameSubChampion" type="xsd:string"></xsd:element>
+      	</xsd:sequence>
+      </xsd:complexType>
+      
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="WorldSoccerChampionsRequest">
+    <wsdl:part element="wsc:WorldSoccerChampions" name="parameters"/>
+  </wsdl:message>
+  <wsdl:message name="WorldSoccerChampionsResponse">
+    <wsdl:part element="wsc:WorldSoccerChampionsResponse" name="parameters"/>
+  </wsdl:message>
+  <wsdl:portType name="WorldSoccerChampions">
+    <wsdl:operation name="WorldSoccerChampions">
+      <wsdl:input message="wsc:WorldSoccerChampionsRequest"/>
+      <wsdl:output message="wsc:WorldSoccerChampionsResponse"/>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="WorldSoccerChampionsSOAP" type="wsc:WorldSoccerChampions">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="WorldSoccerChampions">
+      <soap:operation soapAction="http://wlopera.org/WorldSoccerChampions/WorldSoccerChampions"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="WorldSoccerChampions">
+    <wsdl:port binding="wsc:WorldSoccerChampionsSOAP" name="WorldSoccerChampionsSOAP">
+      <soap:address location="http://localhost:8080/worldSoccerChampions/services/WorldSoccerChampionsSOAP"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>
