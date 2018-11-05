@@ -1,6 +1,6 @@
 # WorldSoccerChampions - CAMPEONES DE MUNDIALES
 
-Exponer un Servicio Web. Que permita consultar datos de los cameonatos mundiales de Futbol.
+Exponer un Servicio Web. Que permita consultar datos de los campeonatos mundiales de Futbol.
 
 Uso de la interface 'ClientWSCApi', que permite simular la consulta al 'core de la compañia' para responder peticiones.
 
